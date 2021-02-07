@@ -4,8 +4,78 @@ const inputValue = document.getElementById('input-food');
 button.addEventListener('click', function () {
     fetch('https://www.themealdb.com/api/json/v1/1/search.php?f=' + inputValue.value)
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => displayFoods(data))
 
-        .catch(err => alert('Wrong city name'))
+        .catch(err => alert('Wrong key name'))
+
+    const displayFoods = foods => {
+        const foodsDiv = document.getElementById('foods');
+        // console.log(foods);
+
+        foods.meals.forEach(food => {
+            const foodDiv = document.createElement('div');
+
+            foodDiv.className = 'food';
+            const foodInfo = `
+            <img id ="food-image" src = "${food.strMealThumb}">
+            <h3 id="food-name">${food.strMeal}</h3>
+            <button onclick='displayIngredients("${food.strMeal}")'>Ingredients</button>
+            `
+           // foodDiv.innerHTML = "";
+            foodDiv.innerHTML = foodInfo;
+            foodsDiv.appendChild(foodDiv);
+
+            // if(document.getElementById('ingredient-btn').clicked == true){
+            //     foodDiv.className = 'food';
+            //     const foodGradient = `
+            //     <img id ="food-image" src = "${food.strMealThumb}">
+            //     <br>
+            //     <h3 id="food-name">${food.strMeal}</h3>
+            //     <br>
+
+            //     `
+                
+
+
+
+
+            //   img.onclick = displayIngredients("${food.strMeal}");
+        });
+
+
+    }
+
+
+
 
 })
+
+const displayIngredients = strMeal => {
+        fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=' +strMeal)
+        .then(res => res.json())
+        .then(data => ingredientList(data['meals'][0]))
+}
+
+const ingredientList = food => {
+    const foodDetails = document.getElementById('food-details');
+
+    const foodIngredients = document.getElementById('food-ingredients');
+    const li = document.createElement('li');
+
+    foodDetails.innerHTML = `
+    <img src ="${food.strMealThumb}">
+    <h3>${food.strMeal}</h3>
+    <h5>Ingredients:</h5>
+    <li>${food.strIngredient1}</li>
+     <li>${food.strIngredient2}</li>
+     <li>${food.strIngredient3}</li>
+     <li>${food.strIngredient4}</li>
+     <li>${food.strIngredient5}</li>
+     <li>${food.strIngredient6}</li>
+     <li>${food.strIngredient7}</li>
+     <li>${food.strIngredient8}</li>
+     <li>${food.strIngredient9}</li>
+     <li>${food.strIngredient10}</li>
+    `
+    foodIngredients.appendChild(li);
+}
