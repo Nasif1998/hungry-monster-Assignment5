@@ -24,20 +24,7 @@ button.addEventListener('click', function () {
             foodDiv.innerHTML = foodInfo;
             foodsDiv.appendChild(foodDiv);
 
-            // if (button.clicked == true) {
-            //     foodDiv.innerHTML = "";
-            //     fetch('https://www.themealdb.com/api/json/v1/1/search.php?f=' + inputValue.value)
-            //         .then(res => res.json())
-            //         .then(data => displayFoods(data))
-
-            //         .catch(err => alert('Wrong key name'))
-
-            // }
-
-
-
-
-            //   img.onclick = displayIngredients("${food.strMeal}");
+            
         });
 
 
