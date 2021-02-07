@@ -17,24 +17,22 @@ button.addEventListener('click', function () {
 
             foodDiv.className = 'food';
             const foodInfo = `
-            <img id ="food-image" src = "${food.strMealThumb}">
-            <h3 id="food-name">${food.strMeal}</h3>
-            <button onclick='displayIngredients("${food.strMeal}")'>Ingredients</button>
+            <img id ="food-image" onclick='displayIngredients("${food.strMeal}")' src = "${food.strMealThumb}">
+            <h3 id="food-name" onclick='displayIngredients("${food.strMeal}")'>${food.strMeal}</h3>
             `
-           // foodDiv.innerHTML = "";
+            // foodDiv.innerHTML = "";
             foodDiv.innerHTML = foodInfo;
             foodsDiv.appendChild(foodDiv);
 
-            // if(document.getElementById('ingredient-btn').clicked == true){
-            //     foodDiv.className = 'food';
-            //     const foodGradient = `
-            //     <img id ="food-image" src = "${food.strMealThumb}">
-            //     <br>
-            //     <h3 id="food-name">${food.strMeal}</h3>
-            //     <br>
+            // if (button.clicked == true) {
+            //     foodDiv.innerHTML = "";
+            //     fetch('https://www.themealdb.com/api/json/v1/1/search.php?f=' + inputValue.value)
+            //         .then(res => res.json())
+            //         .then(data => displayFoods(data))
 
-            //     `
-                
+            //         .catch(err => alert('Wrong key name'))
+
+            // }
 
 
 
@@ -51,7 +49,7 @@ button.addEventListener('click', function () {
 })
 
 const displayIngredients = strMeal => {
-        fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=' +strMeal)
+    fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=' + strMeal)
         .then(res => res.json())
         .then(data => ingredientList(data['meals'][0]))
 }

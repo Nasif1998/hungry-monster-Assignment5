@@ -21,7 +21,8 @@
 #food-details img{
     width: 200px;
     margin-bottom: 50px;
+    margin-left: 20px;
 }
 #food-details{
-    text-align: center;
+    margin-left: 20px;
 }
