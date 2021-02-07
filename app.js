@@ -6,7 +6,7 @@ button.addEventListener('click', function () {
         .then(res => res.json())
         .then(data => displayFoods(data))
 
-        .catch(err => alert('Wrong key name'))
+        .catch(err => alert('No item found'))
 
     const displayFoods = foods => {
         const foodsDiv = document.getElementById('foods');
