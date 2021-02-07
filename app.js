@@ -11,6 +11,7 @@ button.addEventListener('click', function () {
     const displayFoods = foods => {
         const foodsDiv = document.getElementById('foods');
         // console.log(foods);
+        foodsDiv.innerHTML = "";
 
         foods.meals.forEach(food => {
             const foodDiv = document.createElement('div');
@@ -20,11 +21,11 @@ button.addEventListener('click', function () {
             <img id ="food-image" onclick='displayIngredients("${food.strMeal}")' src = "${food.strMealThumb}">
             <h3 id="food-name" onclick='displayIngredients("${food.strMeal}")'>${food.strMeal}</h3>
             `
-            // foodDiv.innerHTML = "";
             foodDiv.innerHTML = foodInfo;
             foodsDiv.appendChild(foodDiv);
 
-            
+
+
         });
 
 
